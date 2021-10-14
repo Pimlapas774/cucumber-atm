@@ -70,4 +70,15 @@ public class StepDefATM {
                      bank.findCustomer(id).getAccount().getBalance());
     }
 
+    @When("I deposit {float} to ATM")
+    public void i_deposit_to_atm(double amount){
+        atm.deposit(amount);
+    }
+
+    @When("I deposit that, less than zero, {float} to ATM")
+    public void Deposit_amount_less_than_zero(double amount) throws LessThanZeroException {
+        assertThrows(LessThanZeroException.class,
+                () -> atm.deposit(amount));
+    }
+
 }

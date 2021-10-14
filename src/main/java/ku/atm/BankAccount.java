@@ -27,6 +27,8 @@ public class BankAccount {
       @param amount the amount of money to withdraw
    */
    public void deposit(double amount) {
+      if(amount < 0)
+         throw new LessThanZeroException("cannot deposit less than zero");
       balance = balance + amount;
    }
 
